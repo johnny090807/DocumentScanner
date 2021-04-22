@@ -16,8 +16,8 @@ def gen():
     webCamFeed = True
     cap = cv2.VideoCapture(0)
     #cap.set(10,160)
-    heightImg = 480
-    widthImg = 640
+    heightImg = 800
+    widthImg = 1200
 
     count = 0
 
@@ -25,7 +25,7 @@ def gen():
         imgBlank = np.zeros((heightImg, widthImg, 3), np.uint8)
         
         if webCamFeed:success, img = cap.read()
-        img = cv2.resize(img, (widthImg, heightImg))
+        img = cv2.resize(img, (0, 0), None, 1, 1)
         imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         imgBlur = cv2.GaussianBlur(imgGray, (5,5), 1)
         imgThreshold = cv2.Canny(imgGray, 250, 200)
